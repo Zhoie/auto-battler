@@ -1,38 +1,60 @@
-
 "use client";
 
 import { useState } from "react";
-import { ClassSelection } from "./components/ClassSelection";
-import { Arena } from "./components/Arena";
-import { DictionaryModal } from "@/components/game/DictionaryModal";
-import BookOpen from "lucide-react/dist/esm/icons/book-open";
+import { DictionarySearch } from "@/components/dictionary/DictionarySearch";
+import { WordDefinition } from "@/components/dictionary/WordDefinition";
+import { fetchWordDefinition, WordEntry } from "@/lib/dictionaryApi";
 
 export default function Home() {
-  const [playerClass, setPlayerClass] = useState<"warrior" | "archer" | "mage" | null>(null);
-  const [isGrimoireOpen, setIsGrimoireOpen] = useState(false);
+  const [data, setData] = useState<WordEntry[] | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  const handleSearch = async (word: string) => {
+    setIsLoading(true);
+    setError(null);
+
+    try {
+      const result = await fetchWordDefinition(word);
+      if (result) {
+        setData(result);
+      } else {
+        setError("Word not found.");
+        setData(null);
+      }
+    } catch (err) {
+      setError("Failed to fetch definition.");
+      setData(null);
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   return (
-    <>
-      {/* Grimoire Toggle Button */}
-      <button
-        onClick={() => setIsGrimoireOpen(true)}
-        className="fixed bottom-6 right-6 z-40 p-4 bg-indigo-600 text-white rounded-full shadow-2xl hover:bg-indigo-700 hover:scale-105 transition-all duration-300 border-4 border-indigo-400/30 group"
-        aria-label="Open Grimoire"
-      >
-        <BookOpen className="h-6 w-6 group-hover:rotate-12 transition-transform" />
-      </button>
+    <main className="min-h-screen pb-20 md:pt-20 pt-14 px-5 max-w-2xl mx-auto">
+      <div className="mb-5">
+        <h1 className="text-[34px] font-bold text-black tracking-tight">
+          Dictionary
+        </h1>
+      </div>
 
-      {/* Dictionary Modal */}
-      <DictionaryModal
-        isOpen={isGrimoireOpen}
-        onClose={() => setIsGrimoireOpen(false)}
-      />
+      <DictionarySearch onSearch={handleSearch} isLoading={isLoading} />
 
-      {!playerClass ? (
-        <ClassSelection onSelectClass={setPlayerClass} />
-      ) : (
-        <Arena playerClass={playerClass} onRestart={() => setPlayerClass(null)} />
+      {error && (
+        <div className="mt-6 p-4 rounded-xl bg-gray-200/50 text-gray-500 text-center font-medium">
+          {error}
+        </div>
       )}
-    </>
+
+      {data && data.length > 0 && (
+        <div className="mt-6 space-y-5">
+          {data.map((entry, idx) => (
+            <div key={idx}>
+              <WordDefinition data={entry} onSearch={handleSearch} />
+            </div>
+          ))}
+        </div>
+      )}
+    </main>
   );
 }

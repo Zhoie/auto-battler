@@ -1,62 +1,31 @@
 @import "tailwindcss";
 
 :root {
-  --background: #0f172a;
-  --foreground: #f8fafc;
-
-  /* Gold Accents */
-  --gold-primary: #ffd700;
-  --gold-secondary: #d4af37;
-  --gold-glow: rgba(255, 215, 0, 0.5);
-
-  /* Magical Energy */
-  --magic-blue: #60a5fa;
-  --magic-purple: #c084fc;
+  --background: #F2F2F7;
+  --foreground: #000000;
+  --ios-blue: #007AFF;
 }
 
 body {
+  background-color: var(--background);
   color: var(--foreground);
-  background: var(--background);
-  font-family: var(--font-geist-sans), Arial, sans-serif;
-  overflow-x: hidden;
+  /* iOS System Font Stack */
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
 }
 
-/* Glassmorphism Utilities */
-.glass-panel {
-  background: rgba(15, 23, 42, 0.6);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+/* iOS-like Scrollbar for web */
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
 }
 
-.gold-border {
-  border: 1px solid transparent;
-  background: linear-gradient(#0f172a, #0f172a) padding-box,
-    linear-gradient(45deg, var(--gold-secondary), var(--gold-primary)) border-box;
-}
-
-/* Typography */
-.font-serif {
-  font-family: 'Times New Roman', serif;
-  /* Placeholder for a better serif */
-}
-
-/* Animations */
-@keyframes float {
-  0% {
-    transform: translateY(0px);
+@layer utilities {
+  .ios-card {
+    @apply bg-white rounded-2xl shadow-[0_1px_2px_rgba(0, 0, 0, 0.03)] border border-black/[0.03];
   }
 
-  50% {
-    transform: translateY(-10px);
+  .ios-active {
+    @apply active:opacity-70 transition-opacity duration-200;
   }
-
-  100% {
-    transform: translateY(0px);
-  }
-}
-
-.animate-float {
-  animation: float 6s ease-in-out infinite;
 }

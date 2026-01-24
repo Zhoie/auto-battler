@@ -1,4 +1,3 @@
-
 import Volume2 from "lucide-react/dist/esm/icons/volume-2";
 import Play from "lucide-react/dist/esm/icons/play";
 import { useRef, useState } from "react";
@@ -18,7 +17,10 @@ export function AudioPlayer({ audioUrl }: AudioPlayerProps) {
                 audioRef.current.currentTime = 0;
                 setIsPlaying(false);
             } else {
-                audioRef.current.play();
+                audioRef.current.play().catch((err) => {
+                    console.error("Audio playback failed:", err);
+                    setIsPlaying(false);
+                });
                 setIsPlaying(true);
             }
         }
@@ -34,10 +36,10 @@ export function AudioPlayer({ audioUrl }: AudioPlayerProps) {
         <div className="inline-flex items-center">
             <button
                 onClick={togglePlay}
-                className="p-3 rounded-full bg-indigo-100 text-indigo-600 hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-colors"
+                className="p-2 rounded-full bg-[#007AFF]/10 text-[#007AFF] hover:bg-[#007AFF]/20 active:bg-[#007AFF]/30 transition-colors ios-active"
                 aria-label="Play pronunciation"
             >
-                {isPlaying ? <Volume2 className="h-6 w-6 animate-pulse" /> : <Play className="h-6 w-6 fill-current" />}
+                {isPlaying ? <Volume2 className="h-5 w-5 animate-pulse" /> : <Volume2 className="h-5 w-5" />}
             </button>
             <audio ref={audioRef} src={audioUrl} onEnded={handleEnded} className="hidden" />
         </div>
