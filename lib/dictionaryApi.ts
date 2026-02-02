@@ -37,7 +37,7 @@ export interface WordEntry {
 
 export async function fetchWordDefinition(word: string): Promise<WordEntry[] | null> {
     try {
-        const response = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`);
+        const response = await fetch(`/api/dictionary/${encodeURIComponent(word)}`);
 
         if (!response.ok) {
             if (response.status === 404) {

@@ -1,0 +1,59 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 4 0 R /Resources << /Font << /F1 5 0 R /F2 6 0 R >> >> >>
+endobj
+4 0 obj
+<< /Length 2160 >>
+stream
+BT /F2 20 Tf 1 0 0 1 54.00 738.00 Tm (Auto Battler Dictionary - App Summary) Tj ET
+BT /F2 12 Tf 1 0 0 1 54.00 710.00 Tm (What it is) Tj ET
+BT /F1 10 Tf 1 0 0 1 54.00 694.00 Tm (Auto Battler Dictionary is a Next.js web app for looking up English word) Tj ET
+BT /F1 10 Tf 1 0 0 1 54.00 681.00 Tm (definitions, pronunciations, and examples via a built-in API route.) Tj ET
+BT /F2 12 Tf 1 0 0 1 54.00 664.00 Tm (Who it's for) Tj ET
+BT /F1 10 Tf 1 0 0 1 54.00 648.00 Tm (People who want quick word definitions and pronunciation audio in a browser.) Tj ET
+BT /F2 12 Tf 1 0 0 1 54.00 631.00 Tm (What it does) Tj ET
+BT /F1 10 Tf 1 0 0 1 64.00 615.00 Tm (- Search box with 500 ms debounce and manual submit.) Tj ET
+BT /F1 10 Tf 1 0 0 1 64.00 602.00 Tm (- Fetches definitions from `/api/dictionary/{word}`.) Tj ET
+BT /F1 10 Tf 1 0 0 1 64.00 589.00 Tm (- Shows word, phonetic spelling, parts of speech, and definitions.) Tj ET
+BT /F1 10 Tf 1 0 0 1 64.00 576.00 Tm (- Displays example sentences when provided by the API.) Tj ET
+BT /F1 10 Tf 1 0 0 1 64.00 563.00 Tm (- Plays pronunciation audio from the first available phonetics entry.) Tj ET
+BT /F1 10 Tf 1 0 0 1 64.00 550.00 Tm (- Shows source URL for the entry and clear error states.) Tj ET
+BT /F1 10 Tf 1 0 0 1 64.00 537.00 Tm (- Includes an animated avatar demo at `/avatar`.) Tj ET
+BT /F2 12 Tf 1 0 0 1 54.00 520.00 Tm (How it works) Tj ET
+BT /F1 10 Tf 1 0 0 1 64.00 504.00 Tm (- UI: `app/page.tsx` client component renders search and results.) Tj ET
+BT /F1 10 Tf 1 0 0 1 64.00 491.00 Tm (- Components: `DictionarySearch`, `WordDefinition`, `AudioPlayer`.) Tj ET
+BT /F1 10 Tf 1 0 0 1 64.00 478.00 Tm (- Data flow: input -> `fetchWordDefinition` -> `/api/dictionary/[word]`.) Tj ET
+BT /F1 10 Tf 1 0 0 1 64.00 465.00 Tm (- Server: API route proxies to dictionaryapi.dev \(English, no-store\).) Tj ET
+BT /F2 12 Tf 1 0 0 1 54.00 448.00 Tm (How to run) Tj ET
+BT /F1 10 Tf 1 0 0 1 64.00 432.00 Tm (1. Install dependencies: Not found in repo.) Tj ET
+BT /F1 10 Tf 1 0 0 1 64.00 419.00 Tm (2. Start dev server: `npm run dev`.) Tj ET
+BT /F1 10 Tf 1 0 0 1 64.00 406.00 Tm (3. Open `http://localhost:3000` in a browser.) Tj ET
+
+endstream
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+6 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>
+endobj
+xref
+0 7
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000115 00000 n 
+0000000251 00000 n 
+0000002463 00000 n 
+0000002533 00000 n 
+trailer
+<< /Size 7 /Root 1 0 R >>
+startxref
+2608
+%%EOF
